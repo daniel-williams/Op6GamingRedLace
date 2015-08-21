@@ -12,8 +12,8 @@ var DIST = path.resolve(ROOT, 'assets/scripts');
 
 var config = {
     entry: {
-        //app: path.resolve(ROOT, 'app/main.js'),
-        app: ['webpack/hot/dev-server', path.resolve(ROOT, 'app/main.js')],
+        app: path.resolve(ROOT, 'app/main.js'),
+        //app: ['webpack/hot/dev-server', path.resolve(ROOT, 'app/main.js')],
     },
     output: {
         path: DIST,
