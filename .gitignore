@@ -4,3 +4,5 @@ bundles/
 bundle.js
 *.bundle.js
 
+client/content/guides/
+client/content/styles/
