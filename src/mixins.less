@@ -1,0 +1,97 @@
+
+@qtr: ~'-qtr';
+@half: ~'-half';
+@dbl: ~'-dbl';
+@trpl: ~'-trpl';
+
+.make-space(@size) {
+  .make-padding(@size / 4, @qtr);
+  .make-padding(@size / 2, @half);
+  .make-padding(@size, ~'');
+  .make-padding(@size * 2, @dbl);
+  .make-padding( @size * 3, @trpl);
+  .make-margin(@size / 4, @qtr);
+  .make-margin(@size / 2, @half);
+  .make-margin(@size, ~'');
+  .make-margin(@size * 2, @dbl);
+  .make-margin( @size * 3, @trpl);
+}
+
+.make-padding(@size, @prefix) {
+  .pt@{prefix} {
+    padding-top: ~"@{size}px"
+  }
+  .pb@{prefix} {
+    padding-bottom: ~"@{size}px"
+  }
+  .pv@{prefix} {
+    padding-top: ~"@{size}px";
+    padding-bottom: ~"@{size}px"
+  }
+  .pl@{prefix} {
+    padding-left: ~"@{size}px"
+  }
+  .pr@{prefix} {
+    padding-right: ~"@{size}px"
+  }
+  .ph@{prefix} {
+    padding-left: ~"@{size}px";
+    padding-right: ~"@{size}px"
+  }
+}
+
+.make-margin(@size, @prefix) {
+  .mt@{prefix} {
+    margin-top: ~"@{size}px"
+  }
+  .mb@{prefix} {
+    margin-bottom: ~"@{size}px"
+  }
+  .mv@{prefix} {
+    margin-top: ~"@{size}px";
+    margin-bottom: ~"@{size}px"
+  }
+  .ml@{prefix} {
+    margin-left: ~"@{size}px"
+  }
+  .mr@{prefix} {
+    margin-right: ~"@{size}px"
+  }
+  .mh@{prefix} {
+    margin-left: ~"@{size}px";
+    margin-right: ~"@{size}px"
+  }
+}
+
+.define-header-size(@base-size, @h1, @h2, @h3, @h4) {
+  h1 {
+    font-size: @base-size * @h1;
+    line-height: @base-size * @h1 * 1.1;
+    & > .accent {
+      font-size: @base-size * @h1 * 0.5;
+      line-height: @base-size * @h1;
+    }
+  }
+  h2 {
+    font-size: @base-size * @h2;
+    line-height: @base-size * @h2 * 1.1;
+  }
+  h3 {
+    font-size: @base-size * @h3;
+    line-height: @base-size * @h3 * 1.1;
+  }
+  h4 {
+    font-size: @base-size * @h4;
+    line-height: @base-size * @h4 * 1.1;
+  }
+}
+.define-header-size-min(@min-width, @base-size, @h1, @h2, @h3, @h4) {
+  @media (min-width: @min-width) {
+    .define-header-size(@base-size, @h1, @h2, @h3, @h4)
+  }
+}
+.define-header-size-max(@max-width, @base-size, @h1, @h2, @h3, @h4) {
+  @media (max-width: @max-width) {
+    .define-header-size(@base-size, @h1, @h2, @h3, @h4)
+  }
+}
