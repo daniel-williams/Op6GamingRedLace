@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var app = express();
 
+app.use(require('connect-livereload')());
 app.use('/content', express.static('client/content'));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded

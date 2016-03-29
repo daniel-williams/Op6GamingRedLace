@@ -26,8 +26,9 @@ gulp.task('build', ['buildOnce', 'watch']);
 gulp.task('start', ['build'], function () {
   server.run(['server/app.js']);
 
-  // Restart the server when file changes
-  gulp.watch(['client/**/*.html'], server.notify);
+  gulp.watch([__dirname + '/client/**/*.html', __dirname + '/client/**/*.css'], function(event) {
+    server.notify(event);
+  });
 });
 
 gulp.task('default', ['start']);
